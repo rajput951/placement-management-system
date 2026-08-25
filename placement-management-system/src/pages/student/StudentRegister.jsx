@@ -24,7 +24,7 @@ function StudentRegister() {
     setError('')
     setLoading(true)
     try {
-      await axios.post('http://localhost:5000/api/students', formData)
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/students`, formData)
       navigate('/student/login')
     } catch (err) {
       setError(err.response?.data?.error || 'Something went wrong. Please try again.')

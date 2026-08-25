@@ -54,13 +54,10 @@ const colorClasses = {
 
 function Home() {
   const [role, setRole] = useState('student')
-  const [username, setUsername] = useState('')
-  const [password, setPassword] = useState('')
   const navigate = useNavigate()
 
-  const handleSubmit = (e) => {
-    e.preventDefault()
-    navigate(`/${role}`)
+  const handleContinue = () => {
+    navigate(`/${role}/login`)
   }
 
   return (
@@ -71,13 +68,12 @@ function Home() {
         <p className="text-xs text-gray-500 tracking-wide">PLACEMENT MANAGEMENT SYSTEM</p>
       </div>
 
-      {/* Login Card */}
+      {/* Role selection Card */}
       <div className="bg-white shadow-xl rounded-xl p-8 w-full max-w-sm border border-gray-100">
         <h1 className="text-xl font-bold text-blue-700 text-center mb-6 leading-snug">
-          Login Portal
+          Welcome
         </h1>
 
-        {/* Role selector — card style */}
         <p className="text-sm text-gray-600 mb-3">I am a</p>
         <div className="grid grid-cols-3 gap-3 mb-6">
           {roles.map((r) => {
@@ -97,35 +93,12 @@ function Home() {
           })}
         </div>
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-          <input
-            type="text"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            required
-            placeholder="User Name"
-            className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-            placeholder="Password"
-            className="w-full border border-gray-300 rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
-          />
-
-          <button
-            type="submit"
-            className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold rounded-lg py-3 mt-2 tracking-wide"
-          >
-            LOGIN
-          </button>
-        </form>
-
-        <a href="#" className="block text-center text-blue-700 text-sm underline mt-4">
-          Reset Password?
-        </a>
+        <button
+          onClick={handleContinue}
+          className="w-full bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-bold rounded-lg py-3 tracking-wide"
+        >
+          CONTINUE TO LOGIN
+        </button>
       </div>
     </div>
   )
